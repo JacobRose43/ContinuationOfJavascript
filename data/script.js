@@ -84,6 +84,14 @@ axios
 
 // example with async function
 
+const addNewJokeToList = async () => {
+	let jokeText = await axiosGetJoke();
+	let jokesList = document.querySelector(".jokesList");
+	let newLi = document.createElement("li");
+	newLi.append(jokeText);
+	jokesList.append(newLi);
+};
+
 const axiosGetJoke = async () => {
 	try {
 		let response = await axios.get("https://icanhazdadjoke.com/", {
@@ -92,12 +100,19 @@ const axiosGetJoke = async () => {
 				Accept: "application/json",
 			},
 		});
-		console.log(response.data.joke);
-		let jokesList = document.querySelector(".jokesList");
-		let newLi = document.createElement("li");
-		newLi.append(response.data.joke);
-		jokesList.append(newLi);
-	} catch (error) {
-		console.log("We have a situation here!", error);
+		return response.data.joke;
+	} catch (e) {
+		console.log(e);
+		return "No jokes available!";
 	}
 };
+
+const jokeButton = document.querySelector(".jokeButton");
+jokeButton.addEventListener("click", addNewJokeToList);
+
+//
+//
+//
+//
+//
+//
