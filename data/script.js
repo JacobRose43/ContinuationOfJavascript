@@ -266,3 +266,41 @@ class Color {
 
 let color1 = new Color(125, 25, 225);
 let color2 = new Color(225, 25, 125);
+
+//!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+
+//Extends and Super Keywords (classes)
+
+//
+
+class Pet {
+	constructor(name, age) {
+		this.name = name;
+		this.age = age;
+	}
+	eat() {
+		return `${this.name} is eating`;
+	}
+}
+
+class Cat extends Pet {
+	constructor(name, age, livesLeft = 9) {
+		super(name, age);
+		this.livesLeft = livesLeft;
+	}
+	meow() {
+		return "MEOWWWW!!";
+	}
+	eat() {
+		return `${this.name} omomomom delicius!`;
+	}
+}
+
+class Dog extends Pet {
+	bark() {
+		return "WOOOOFFF!!";
+	}
+}
+
+// The extends keyword is used to create a child class of another class (parent).
+// The super keyword is used to call the constructor of its parent class to access the parent's properties and methods.
